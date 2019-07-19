@@ -45,7 +45,8 @@ public class GoodUpdateServlet extends HttpServlet {
                 if (fileItem.isFormField()) {
                     if ("pics".equals(fileItem.getFieldName())) {
                         while (i==0){
-                        goods.setPic(fileItem.getString());}
+                        goods.setPic(fileItem.getString());
+                        i++;}
                     }
                     else if ("name".equals(fileItem.getFieldName())) {
                         goods.setName(fileItem.getString("utf-8"));
@@ -59,9 +60,9 @@ public class GoodUpdateServlet extends HttpServlet {
                         goods.setId(Integer.parseInt(fileItem.getString()));
                     }
                 } else {
-                    System.out.println("!!!!!!!启动了备用方法！！！！");
                     String fileName = fileItem.getName();
                     if (fileName != null && fileName != "") {
+                        System.out.println("!!!!!!!启动了备用方法！！！！");
                         String parentPath = req.getServletContext().getRealPath("/upload");
                         File parentFile = new File(parentPath);
                         File newFile = new File(parentFile, fileName);
